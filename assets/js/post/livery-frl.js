@@ -149,10 +149,10 @@
             </div>
             <div class="mt-3 bg-light-subtle rounded-bottom text-center">
               ${showButtons ? `<div class="gap-1 hstack">
-                <button class="btn btn-black w-100" onclick="openJSON('${post.folder}/${post.body}')">
+                <button class="btn btn-black w-100" onclick="openJSON(item, 'body')">
                   <i class="fa fa-code me-1"></i>Body
                 </button>
-                <button class="btn btn-black w-100" onclick="openJSON('${post.folder}/${post.window}')">
+                <button class="btn btn-black w-100" onclick="openJSON(item, 'window')">
                   <i class="fa fa-code me-1"></i>Window
                 </button>
               </div>`: `<p class="text-warning small mt-2">Masukkan token untuk membuka tombol</p>`}
@@ -181,10 +181,14 @@
     });
 
     // === FUNGSI OPEN JSON ===
-  function openJSON(post, path) {
-  const url = post.statusL === "Public"
-    ? `frl/${path}`         // jika Public → link normal
-    : "404.html";           // jika Private/Premium/Banned → 404
+
+function openJSON(post, type) {
+  if (post.statusL !== "Public") {
+    window.open("404.html", "_blank");
+    return;
+  }
+  const file = type === "body" ? post.body : post.window;
+  const url = `frl/${post.folder}/${file}`;
   window.open(url, "_blank");
 }
 
@@ -197,9 +201,7 @@ document.addEventListener("click", (e) => {
   if (heart) {
     const id = heart.getAttribute("data-target");
     console.log("%c\u2764%c Like diklik pada: " + id, "color: #80ff00; font-weight: bold;", "color: black; font-weight: bold;");
-
     const isLiked = heart.classList.contains("bi-heart-fill");
-
     if (isLiked) {
       heart.classList.replace("bi-heart-fill", "bi-heart");
       localStorage.setItem(`like-${id}`, "false");
