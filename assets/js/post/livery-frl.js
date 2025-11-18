@@ -149,10 +149,10 @@
             </div>
             <div class="mt-3 bg-light-subtle rounded-bottom text-center">
               ${showButtons ? `<div class="gap-1 hstack">
-                <button class="btn btn-black w-100" onclick="openJSON(item, 'body')">
+                <button class="btn btn-black w-100" onclick="openJSON(post, 'body')">
                   <i class="fa fa-code me-1"></i>Body
                 </button>
-                <button class="btn btn-black w-100" onclick="openJSON(item, 'window')">
+                <button class="btn btn-black w-100" onclick="openJSON(post, 'window')">
                   <i class="fa fa-code me-1"></i>Window
                 </button>
               </div>`: `<p class="text-warning small mt-2">Masukkan token untuk membuka tombol</p>`}
@@ -222,3 +222,4 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
