@@ -106,7 +106,7 @@
     // === RENDER POST ===
     function renderPosts(showButtons = false) {
       postContainer.innerHTML = "";
-      posts.forEach(post => {
+      posts.forEach((post, i) => {
       	
     let statusIcon = {
     Public: "success",
@@ -149,10 +149,10 @@
             </div>
             <div class="mt-3 bg-light-subtle rounded-bottom text-center">
               ${showButtons ? `<div class="gap-1 hstack">
-                <button class="btn btn-black w-100" onclick="openJSON(post, 'body')">
+                <button class="btn btn-black w-100" onclick="openJSON(${i}, 'body')">
                   <i class="fa fa-code me-1"></i>Body
                 </button>
-                <button class="btn btn-black w-100" onclick="openJSON(post, 'window')">
+                <button class="btn btn-black w-100" onclick="openJSON(${i}, 'window')">
                   <i class="fa fa-code me-1"></i>Window
                 </button>
               </div>`: `<p class="text-warning small mt-2">Masukkan token untuk membuka tombol</p>`}
@@ -181,8 +181,8 @@
     });
 
     // === FUNGSI OPEN JSON ===
-
-function openJSON(post, type) {
+function openJSON(index, type) {
+  const post = posts[index]; // AMBIL DATA BERDASARKAN INDEX
   if (post.statusL !== "Public") {
     window.open("404.html", "_blank");
     return;
@@ -191,6 +191,8 @@ function openJSON(post, type) {
   const url = `frl/${post.folder}/${file}`;
   window.open(url, "_blank");
 }
+
+
 
     
     
@@ -222,4 +224,3 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
