@@ -23,7 +23,7 @@ const dataPages = [
 ];
 
 const containerIndex = document.getElementById("postContainer");
-let html = "";
+let html = ""; 
 
 dataPages.forEach(section => {
   html += `
@@ -57,6 +57,7 @@ dataPages.forEach(section => {
 });
 
 containerIndex.innerHTML = html;
+
 
 
 
