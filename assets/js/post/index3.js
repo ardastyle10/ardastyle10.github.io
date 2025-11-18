@@ -3,7 +3,7 @@ const dataPages = [
   {
       judulBesar: "LIVERY FR LEGENDS",
       judulUtama: "LIVERY FRL",
-      linkUtama: "livery-fr-legends.html",
+      linkUtama: "livery-frl.html",
       imgUtama: "LIVERYFRL.jpg",
       dataVisitorUtama: "visitor-view-blogger-livfrlegends",
       dataIdHeartUtama: "Blogger-LivFrLegends",
@@ -57,5 +57,6 @@ dataPages.forEach(section => {
 });
 
 containerIndex.innerHTML = html;
+
 
 
