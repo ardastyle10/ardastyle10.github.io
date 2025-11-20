@@ -97,7 +97,7 @@
     const tokenStatus = document.getElementById("tokenStatus");
 
     
-const validTokens = ["bfwkbcskhjihhifb", "zaQunxlwAp"];
+const validTokens = ["bfwkbcskhjihhifb", "zaQunxlwApnfdwth"];
 
 
 	
