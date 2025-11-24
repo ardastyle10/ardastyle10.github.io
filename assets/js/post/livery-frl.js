@@ -185,17 +185,27 @@ const validTokens = ["bfwkbcskhjihhifb", "zaQunxlwApnfdwth"];
     
     
 
-    // === FUNGSI OPEN JSON ===
+    // === FUNGSI OPEN JSON (LANGSUNG DOWNLOAD) ===
 function openJSON(index, type) {
   const post = posts[index]; // AMBIL DATA BERDASARKAN INDEX
+  
   if (post.statusL !== "Public") {
     window.open("404.html", "_blank");
     return;
   }
+
   const file = type === "body" ? post.body : post.window;
   const url = `frl/${post.folder}/${file}`;
-  window.open(url, "_blank");
+
+  // BUAT LINK DOWNLOAD
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = file; // nama file saat didownload
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
+
 
 
 
